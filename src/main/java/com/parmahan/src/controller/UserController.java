@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.parmahan.src.common.CommonStaticClass;
+import com.parmahan.src.constant.Constants;
 import com.parmahan.src.model.User;
 import com.parmahan.src.service.UserService;
 
@@ -46,7 +47,7 @@ public class UserController {
 		user.setLastName(userMap.get("lastName"));
 		user.setEmail(userMap.get("email"));
 		user.setActive(Boolean.valueOf(userMap.get("active")));
-		user.setInsertedAt(new Date());
+		user.setInsertedAt(CommonStaticClass.getDate(Constants.NEXT_DATE, 1));
 		user.setUpdatedAt(new Date());
 		
 		user = userService.createUser(user);
