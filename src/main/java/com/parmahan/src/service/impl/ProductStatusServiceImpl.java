@@ -16,31 +16,31 @@ public class ProductStatusServiceImpl implements ProductStatusService{
 	@Override
 	public ProductStatus create(ProductStatus productStatus) {
 		// TODO Auto-generated method stub
-		return null;
+		return productStatusDao.create(productStatus);
 	}
 
 	@Override
 	public ProductStatus update(String id, ProductStatus productStatus) {
 		// TODO Auto-generated method stub
-		return null;
+		return productStatusDao.update(id, productStatus);
 	}
 
 	@Override
 	public void delete(String id) {
 		// TODO Auto-generated method stub
-		
+		productStatusDao.delete(id);
 	}
 
 	@Override
 	public ProductStatus getDetail(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		return productStatusDao.getDetail(id);
 	}
 
 	@Override
 	public List<ProductStatus> getAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return productStatusDao.getAll();
 	}
 
 }

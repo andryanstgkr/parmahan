@@ -2,8 +2,6 @@ package com.parmahan.src.service.impl;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.parmahan.src.service.BaseService;
 
 public class BaseServiceImpl implements BaseService<Object>{

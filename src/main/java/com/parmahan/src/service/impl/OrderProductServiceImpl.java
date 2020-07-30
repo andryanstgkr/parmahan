@@ -12,35 +12,35 @@ public class OrderProductServiceImpl implements OrderProductService {
 
 	@Autowired
 	private OrderProductDao orderProductDao;
-	
+
 	@Override
 	public OrderProduct create(OrderProduct orderProduct) {
 		// TODO Auto-generated method stub
-		return null;
+		return orderProductDao.create(orderProduct);
 	}
 
 	@Override
 	public OrderProduct update(String id, OrderProduct orderProduct) {
 		// TODO Auto-generated method stub
-		return null;
+		return orderProductDao.update(id, orderProduct);
 	}
 
 	@Override
 	public void delete(String id) {
 		// TODO Auto-generated method stub
-
+		orderProductDao.delete(id);
 	}
 
 	@Override
 	public List<OrderProduct> getAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return orderProductDao.getAll();
 	}
 
 	@Override
 	public OrderProduct getDetail(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		return orderProductDao.getDetail(id);
 	}
 
 }
