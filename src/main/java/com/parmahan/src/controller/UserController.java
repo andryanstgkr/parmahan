@@ -33,7 +33,7 @@ public class UserController {
 	
 	@RequestMapping(value="/users", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> getAllUsers(){
-		List<User> users = userService.getUsers();
+		List<User> users = userService.getAll();
 		logger.debug("retrieveAllUsers ");
 		return new ResponseEntity<>(users, HttpStatus.OK);
 	}
@@ -50,7 +50,7 @@ public class UserController {
 		user.setInsertedAt(CommonStaticClass.getDate(Constants.NEXT_DATE, 1));
 		user.setUpdatedAt(new Date());
 		
-		user = userService.createUser(user);
+		user = userService.create(user);
 		logger.error("User " + user.getFirstName() + " has been successfully created.");
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}

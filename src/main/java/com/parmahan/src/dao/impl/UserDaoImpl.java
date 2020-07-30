@@ -10,24 +10,25 @@ import com.parmahan.src.model.User;
 public class UserDaoImpl implements UserDao{
 
 	@Override
-	public User createUser(User user) {
-		return user;
+	public User create(User user) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public User updateUser(String id, User user) {
-		
-		return user;
+	public User update(String id, User user) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void deleteUser(String id) {
+	public void delete(String id) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public List<User> getUsers() {
+	public List<User> getAll() {
 		List<User> users = new ArrayList<>();
 		User user = new User();
 		user.setId("123456789");
@@ -39,6 +40,12 @@ public class UserDaoImpl implements UserDao{
 		user.setUpdatedAt(new Date());
 		users.add(user);
 		return users;
+	}
+
+	@Override
+	public User getDetail(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

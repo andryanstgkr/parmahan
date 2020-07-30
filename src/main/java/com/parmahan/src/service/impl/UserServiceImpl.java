@@ -15,27 +15,33 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserDao userDao;
 	@Override
-	public User createUser(User user) {
-		return userDao.createUser(user);
+	public User create(User user) {
+		return userDao.create(user);
 		
 	}
 
 	@Override
-	public User updateUser(String id, User user) {
+	public User update(String id, User user) {
 		// TODO Auto-generated method stub
-		return userDao.updateUser(id, user);
+		return userDao.update(id, user);
 	}
 
 	@Override
-	public void deleteUser(String id) {
+	public void delete(String id) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public List<User> getUsers() {
-		List<User> users = userDao.getUsers();
+	public List<User> getAll() {
+		List<User> users = userDao.getAll();
 		return users;
+	}
+
+	@Override
+	public User getDetail(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
