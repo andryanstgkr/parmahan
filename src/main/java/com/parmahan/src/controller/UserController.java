@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.parmahan.src.common.CommonStaticClass;
+import com.parmahan.src.common.CommonStatic;
 import com.parmahan.src.constant.Constants;
 import com.parmahan.src.model.User;
 import com.parmahan.src.service.UserService;
@@ -23,15 +23,15 @@ import com.parmahan.src.service.UserService;
 
 @Component
 @RestController
-@RequestMapping("/parmahan")
+@RequestMapping("/user")
 public class UserController {
 	private static final Logger logger = org.slf4j.LoggerFactory.getLogger(UserController.class);
 	
 	@Autowired
-	UserService userService;
+	private UserService userService;
 	
 	
-	@RequestMapping(value="/users", method = RequestMethod.GET)
+	@RequestMapping(value="/getAll", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> getAllUsers(){
 		List<User> users = userService.getAll();
 		logger.debug("retrieveAllUsers ");
@@ -42,12 +42,14 @@ public class UserController {
 	public ResponseEntity<User> createUser(@RequestBody Map<String, String> userMap){
 		User user = new User();
 		
-		user.setId(CommonStaticClass.generateUUID());
+		user.setId(CommonStatic.generateUUID());
+		user.setUserName("andryanstgkr");
 		user.setFirstName(userMap.get("firstName"));
 		user.setLastName(userMap.get("lastName"));
 		user.setEmail(userMap.get("email"));
+		user.setPassword(CommonStatic.encodePassword(userMap.get("password")));
 		user.setActive(Boolean.valueOf(userMap.get("active")));
-		user.setInsertedAt(CommonStaticClass.getDate(Constants.NEXT_DATE, 1));
+		user.setInsertedAt(CommonStatic.getDate(Constants.NEXT_DATE, 1));
 		user.setUpdatedAt(new Date());
 		
 		user = userService.create(user);
@@ -55,5 +57,15 @@ public class UserController {
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public ResponseEntity<User> login(@RequestBody Map<String, String> userMap){
+		User user = new User();
+		return new ResponseEntity<User>(user, HttpStatus.OK);
+	}
 	
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	public ResponseEntity<User> logout(@RequestBody Map<String, String> userMap){
+		User user = new User();
+		return new ResponseEntity<User>(user, HttpStatus.OK);
+	}
 }
