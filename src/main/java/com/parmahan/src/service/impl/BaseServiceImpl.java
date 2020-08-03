@@ -6,19 +6,6 @@ import com.parmahan.src.service.BaseService;
 
 public class BaseServiceImpl implements BaseService<Object>{
 
-	
-	@Override
-	public Object create(Object t) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Object update(String id, Object t) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@Override
 	public void delete(String id) {
 		// TODO Auto-generated method stub
@@ -35,6 +22,18 @@ public class BaseServiceImpl implements BaseService<Object>{
 	public List<Object> getAll() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Object save(Object t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean existsById(String id) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

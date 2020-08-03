@@ -65,6 +65,7 @@ import com.parmahan.src.service.impl.UserServiceImpl;
 @EnableTransactionManagement
 public class GeneralConfig {
 
+
 	@Bean
 	public CategoryService categoryService() {
 		return new CategoryServiceImpl();

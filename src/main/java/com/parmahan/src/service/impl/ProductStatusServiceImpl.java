@@ -14,18 +14,6 @@ public class ProductStatusServiceImpl implements ProductStatusService{
 	private ProductStatusDao productStatusDao;
 
 	@Override
-	public ProductStatus create(ProductStatus productStatus) {
-		// TODO Auto-generated method stub
-		return productStatusDao.create(productStatus);
-	}
-
-	@Override
-	public ProductStatus update(String id, ProductStatus productStatus) {
-		// TODO Auto-generated method stub
-		return productStatusDao.update(id, productStatus);
-	}
-
-	@Override
 	public void delete(String id) {
 		// TODO Auto-generated method stub
 		productStatusDao.delete(id);
@@ -41,6 +29,18 @@ public class ProductStatusServiceImpl implements ProductStatusService{
 	public List<ProductStatus> getAll() {
 		// TODO Auto-generated method stub
 		return productStatusDao.getAll();
+	}
+
+	@Override
+	public ProductStatus save(ProductStatus t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean existsById(String id) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

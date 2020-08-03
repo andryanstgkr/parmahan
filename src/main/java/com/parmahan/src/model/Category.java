@@ -1,36 +1,33 @@
 package com.parmahan.src.model;
 
-import java.util.Date;
+import java.io.Serializable;
 
-public class Category {
-	private String id;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+@Entity
+@Table(name = "categories")
+@Access(value = AccessType.FIELD)
+public class Category extends Base implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@NotBlank
+	@Column(name = "name")
 	private String name;
-	private Date createdAt;
-	private Date updatedAt;
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-	
-	
+
 }

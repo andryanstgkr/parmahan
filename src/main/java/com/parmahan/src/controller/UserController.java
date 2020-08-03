@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,28 +21,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.parmahan.src.common.CommonStatic;
 import com.parmahan.src.constant.Constants;
 import com.parmahan.src.model.User;
-import com.parmahan.src.repository.UserRepository;
 import com.parmahan.src.service.UserService;
 
 @Component
 @RestController
 @RequestMapping("/user")
 public class UserController {
-	private static final Logger logger = org.slf4j.LoggerFactory.getLogger(UserController.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
 	@Autowired
 	private UserService userService;
-
-	@Autowired
-	private UserRepository userRepository;
-
-	public UserService getUserService() {
-		return userService;
-	}
-
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
 
 	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> getAllUsers() {
@@ -64,7 +53,7 @@ public class UserController {
 		user.setInsertedAt(CommonStatic.getDate(Constants.NEXT_DATE, 1));
 		user.setUpdatedAt(new Date());
 
-		user = userService.create(user);
+		user = userService.save(user);
 		logger.info("User " + user.getFirstName() + " has been successfully created.");
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
@@ -73,7 +62,7 @@ public class UserController {
 	public ResponseEntity<User> updateUser(@PathVariable("id") String id, @RequestBody Map<String, String> userMap) {
 
 		User user = userService.getDetail(id);
-		if (userRepository.existsById(id)) {
+		if (userService.existsById(id)) {
 			user.setUserName(userMap.get("userName"));
 			user.setFirstName(userMap.get("firstName"));
 			user.setLastName(userMap.get("lastName"));
@@ -82,7 +71,7 @@ public class UserController {
 			user.setActive(Boolean.valueOf(userMap.get("active")));
 			user.setInsertedAt(CommonStatic.getDate(Constants.NEXT_DATE, 1));
 			user.setUpdatedAt(new Date());
-			userService.update(user.getId(), user);
+			userService.save(user);
 		}
 
 		return new ResponseEntity<>(user, HttpStatus.OK);
@@ -106,7 +95,8 @@ public class UserController {
 		try {
 			List<User> users = new ArrayList<User>();
 
-			userRepository.findAll().forEach(users::add);
+			users = userService.getAll();
+			
 			if (users.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}

@@ -1,5 +1,6 @@
 package com.parmahan.src.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,15 +18,9 @@ public class UserServiceImpl implements UserService {
 	private UserRepository userRepository;
 
 	@Override
-	public User create(User user) {
+	public User save(User user) {
 		user = userRepository.save(user);
 		return user;
-	}
-
-	@Override
-	public User update(String id, User user) {
-		
-		return userRepository.save(user);
 	}
 
 	@Override
@@ -42,8 +37,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<User> users = new ArrayList<User>(); 
+		userRepository.findAll().forEach(users::add);
+		return users;
 	}
+
+	@Override
+	public boolean existsById(String id) {
+		return userRepository.existsById(id);
+	}
+	
 
 }
