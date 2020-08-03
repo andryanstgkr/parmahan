@@ -1,33 +1,48 @@
 package com.parmahan.src.model;
 
-import java.util.Date;
+import java.io.Serializable;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "users")
-public class User {
-	@Id
-	private String id;
+@Access(value=AccessType.FIELD)
+public class User extends Base implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@NotBlank
+	@Column(name = "first_name")
 	private String firstName;
+	
+	@NotBlank
+	@Column(name = "last_name")
 	private String lastName;
+	
+	@NotBlank
+	@Column(name = "user_name")
 	private String userName;
+	
+	@NotBlank
+	@Column(name = "email")
 	private String email;
+	
+	@NotBlank
+	@Column(name = "password")
 	private String password;
+	
+	@NotBlank
+	@Column(name = "active")
 	private boolean active;
-	private Date insertedAt;
-	private Date updatedAt;
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
+	
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -74,22 +89,6 @@ public class User {
 
 	public void setActive(boolean active) {
 		this.active = active;
-	}
-
-	public Date getInsertedAt() {
-		return insertedAt;
-	}
-
-	public void setInsertedAt(Date insertedAt) {
-		this.insertedAt = insertedAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
 	}
 
 }

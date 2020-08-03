@@ -2,6 +2,7 @@ package com.parmahan.src.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.parmahan.src.dao.CCTransactionDao;
 import com.parmahan.src.dao.CategoryDao;
@@ -31,7 +32,6 @@ import com.parmahan.src.dao.impl.SessionDaoImpl;
 import com.parmahan.src.dao.impl.TagDaoImpl;
 import com.parmahan.src.dao.impl.UserDaoImpl;
 import com.parmahan.src.dao.impl.UserRoleDaoImpl;
-import com.parmahan.src.service.BaseService;
 import com.parmahan.src.service.CCTransactionService;
 import com.parmahan.src.service.CategoryService;
 import com.parmahan.src.service.CouponService;
@@ -46,7 +46,6 @@ import com.parmahan.src.service.SessionService;
 import com.parmahan.src.service.TagService;
 import com.parmahan.src.service.UserRoleService;
 import com.parmahan.src.service.UserService;
-import com.parmahan.src.service.impl.BaseServiceImpl;
 import com.parmahan.src.service.impl.CCTransactionServiceImpl;
 import com.parmahan.src.service.impl.CategoryServiceImpl;
 import com.parmahan.src.service.impl.CouponServiceImpl;
@@ -63,12 +62,8 @@ import com.parmahan.src.service.impl.UserRoleServiceImpl;
 import com.parmahan.src.service.impl.UserServiceImpl;
 
 @Configuration
+@EnableTransactionManagement
 public class GeneralConfig {
-
-	@Bean
-	public BaseService<Object> baseService() {
-		return new BaseServiceImpl();
-	}
 
 	@Bean
 	public CategoryService categoryService() {
