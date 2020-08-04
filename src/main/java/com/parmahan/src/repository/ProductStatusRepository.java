@@ -2,8 +2,8 @@ package com.parmahan.src.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.parmahan.src.model.ProductCategory;
+import com.parmahan.src.model.ProductStatus;
 
-public interface ProductStatusRepository extends JpaRepository<ProductCategory, String> {
+public interface ProductStatusRepository extends JpaRepository<ProductStatus, String> {
 
 }

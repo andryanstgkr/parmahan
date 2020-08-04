@@ -1,40 +1,46 @@
 package com.parmahan.src.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.parmahan.src.model.SalesOrder;
+import com.parmahan.src.repository.SalesOrderRepository;
 import com.parmahan.src.service.SalesOrderService;
 
-public class SalesOrderServiceImpl implements SalesOrderService{
+public class SalesOrderServiceImpl implements SalesOrderService {
 
+	@Autowired
+	private SalesOrderRepository salesOrderRepository;
 
 	@Override
 	public void delete(SalesOrder salesOrder) {
-		// TODO Auto-generated method stub
+		salesOrderRepository.delete(salesOrder);
 	}
 
 	@Override
 	public SalesOrder getDetail(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		SalesOrder salesOrder = salesOrderRepository.findById(id).get();
+		return salesOrder;
 	}
 
 	@Override
 	public List<SalesOrder> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<SalesOrder> salesOrders = new ArrayList<>();
+		salesOrderRepository.findAll().forEach(salesOrders::add);
+		return salesOrders;
 	}
 
 	@Override
 	public SalesOrder save(SalesOrder salesOrder) {
-		// TODO Auto-generated method stub
-		return null;
+		salesOrder = salesOrderRepository.save(salesOrder);
+		return salesOrder;
 	}
 
 	@Override
 	public boolean existsById(String id) {
-		// TODO Auto-generated method stub
-		return false;
+		return salesOrderRepository.existsById(id);
 	}
 
 }

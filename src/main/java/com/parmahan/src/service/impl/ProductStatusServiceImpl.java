@@ -2,14 +2,20 @@ package com.parmahan.src.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.parmahan.src.model.ProductStatus;
+import com.parmahan.src.repository.ProductStatusRepository;
 import com.parmahan.src.service.ProductStatusService;
 
-public class ProductStatusServiceImpl implements ProductStatusService{
-	
+public class ProductStatusServiceImpl implements ProductStatusService {
+
+	@Autowired
+	private ProductStatusRepository productStatusRepository;
+
 	@Override
 	public void delete(ProductStatus productStatus) {
-		// TODO Auto-generated method stub
+		productStatusRepository.delete(productStatus);
 	}
 
 	@Override

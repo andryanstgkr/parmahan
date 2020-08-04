@@ -25,8 +25,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void delete(User user) {
-		// TODO Auto-generated method stub
-
+		userRepository.delete(user);
 	}
 
 	@Override
@@ -37,7 +36,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> getAll() {
-		List<User> users = new ArrayList<User>(); 
+		List<User> users = new ArrayList<User>();
 		userRepository.findAll().forEach(users::add);
 		return users;
 	}
@@ -46,6 +45,5 @@ public class UserServiceImpl implements UserService {
 	public boolean existsById(String id) {
 		return userRepository.existsById(id);
 	}
-	
 
 }

@@ -1,39 +1,46 @@
 package com.parmahan.src.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.parmahan.src.model.Tag;
+import com.parmahan.src.repository.TagRepository;
 import com.parmahan.src.service.TagService;
 
 public class TagServiceImpl implements TagService {
 
+	@Autowired
+	private TagRepository tagRepository;
+
 	@Override
 	public void delete(Tag tag) {
-		// TODO Auto-generated method stub
+		tagRepository.delete(tag);
 	}
 
 	@Override
 	public Tag getDetail(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		Tag tag = tagRepository.findById(id).get();
+		return tag;
 	}
 
 	@Override
 	public List<Tag> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Tag> tags = new ArrayList<>();
+		tagRepository.findAll().forEach(tags::add);
+		return tags;
 	}
 
 	@Override
-	public Tag save(Tag t) {
-		// TODO Auto-generated method stub
-		return null;
+	public Tag save(Tag tag) {
+		tag = tagRepository.save(tag);
+		return tag;
 	}
 
 	@Override
 	public boolean existsById(String id) {
-		// TODO Auto-generated method stub
-		return false;
+		return tagRepository.existsById(id);
 	}
 
 }
