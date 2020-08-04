@@ -1,19 +1,37 @@
 package com.parmahan.src.model;
 
-import java.util.Date;
+import java.io.Serializable;
 
-public class ProductCategory {
-	private String id;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+@Entity
+@Table(name = "product_categories")
+@Access(value = AccessType.FIELD)
+public class ProductCategory extends Base implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@NotBlank
+	@Column(name = "category_id")
+	private Category category;
+
+	@NotBlank
+	@Column(name = "product_id")
 	private Product product;
-	private Date insertedAt;
-	private Date updatedAt;
 
-	public String getId() {
-		return id;
+	public Category getCategory() {
+		return category;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	public Product getProduct() {
@@ -22,22 +40,6 @@ public class ProductCategory {
 
 	public void setProduct(Product product) {
 		this.product = product;
-	}
-
-	public Date getInsertedAt() {
-		return insertedAt;
-	}
-
-	public void setInsertedAt(Date insertedAt) {
-		this.insertedAt = insertedAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
 	}
 
 }

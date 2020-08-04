@@ -1,27 +1,53 @@
 package com.parmahan.src.model;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
 
-public class OrderProduct {
-	private String id;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+@Entity
+@Table(name = "order_products")
+@Access(value = AccessType.FIELD)
+public class OrderProduct extends Base implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@NotBlank
+	@Column(name = "name")
 	private String name;
+
+	@NotBlank
+	@Column(name = "description")
 	private String description;
+
+	@NotBlank
+	@Column(name = "price")
 	private BigInteger price;
+
+	@NotBlank
+	@Column(name = "quantity")
 	private int quantity;
+
+	@NotBlank
+	@Column(name = "subtotal")
 	private BigInteger subtotal;
-	private Product product;
-	private OrderProduct orderProduct;
-	private Date insertedAt;
-	private Date updatedAt;
 
-	public String getId() {
-		return id;
-	}
+	@NotBlank
+	@Column(name = "sku")
+	private String sku;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+	@NotBlank
+	@Column(name = "order_id")
+	private Order order;
 
 	public String getName() {
 		return name;
@@ -63,36 +89,20 @@ public class OrderProduct {
 		this.subtotal = subtotal;
 	}
 
-	public Product getProduct() {
-		return product;
+	public String getSku() {
+		return sku;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setSku(String sku) {
+		this.sku = sku;
 	}
 
-	public OrderProduct getOrderProduct() {
-		return orderProduct;
+	public Order getOrder() {
+		return order;
 	}
 
-	public void setOrderProduct(OrderProduct orderProduct) {
-		this.orderProduct = orderProduct;
-	}
-
-	public Date getInsertedAt() {
-		return insertedAt;
-	}
-
-	public void setInsertedAt(Date insertedAt) {
-		this.insertedAt = insertedAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
 }

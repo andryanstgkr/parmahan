@@ -1,20 +1,26 @@
 package com.parmahan.src.model;
 
-import java.util.Date;
+import java.io.Serializable;
 
-public class Role {
-	private String id;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+@Entity
+@Table(name = "roles")
+@Access(value = AccessType.FIELD)
+public class Role extends Base implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@NotBlank
+	@Column(name = "name")
 	private String name;
-	private Date insertedAt;
-	private Date updatedAt;
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;
@@ -22,22 +28,6 @@ public class Role {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Date getInsertedAt() {
-		return insertedAt;
-	}
-
-	public void setInsertedAt(Date insertedAt) {
-		this.insertedAt = insertedAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
 	}
 
 }

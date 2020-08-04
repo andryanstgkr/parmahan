@@ -1,29 +1,56 @@
 package com.parmahan.src.model;
 
+import java.io.Serializable;
 import java.math.BigInteger;
-import java.util.Date;
 
-public class Product {
-	private String id;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+@Entity
+@Table(name = "products")
+@Access(value = AccessType.FIELD)
+public class Product extends Base implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@NotBlank
+	@Column(name = "sku")
 	private String sku;
+
+	@NotBlank
+	@Column(name = "name")
 	private String name;
-	private String desc;
+
+	@NotBlank
+	@Column(name = "description")
+	private String description;
+
+	@NotBlank
+	@Column(name = "product_status_id")
 	private ProductStatus productStatus;
-	private ProductCategory productCategory;
+
+	@NotBlank
+	@Column(name = "taxable")
 	private boolean taxable;
+
+	@NotBlank
+	@Column(name = "regular_price")
 	private BigInteger regularPrice;
+
+	@NotBlank
+	@Column(name = "discount_price")
 	private BigInteger discountPrice;
-	private String quantity;
-	private Date insertedAt;
-	private Date updatedAt;
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
+	@NotBlank
+	@Column(name = "quantity")
+	private int quantity;
 
 	public String getSku() {
 		return sku;
@@ -41,12 +68,12 @@ public class Product {
 		this.name = name;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public ProductStatus getProductStatus() {
@@ -55,14 +82,6 @@ public class Product {
 
 	public void setProductStatus(ProductStatus productStatus) {
 		this.productStatus = productStatus;
-	}
-
-	public ProductCategory getProductCategory() {
-		return productCategory;
-	}
-
-	public void setProductCategory(ProductCategory productCategory) {
-		this.productCategory = productCategory;
 	}
 
 	public boolean isTaxable() {
@@ -89,28 +108,12 @@ public class Product {
 		this.discountPrice = discountPrice;
 	}
 
-	public String getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(String quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
-	}
-
-	public Date getInsertedAt() {
-		return insertedAt;
-	}
-
-	public void setInsertedAt(Date insertedAt) {
-		this.insertedAt = insertedAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
 	}
 
 }

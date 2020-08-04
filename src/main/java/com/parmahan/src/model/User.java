@@ -11,38 +11,37 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "users")
-@Access(value=AccessType.FIELD)
+@Access(value = AccessType.FIELD)
 public class User extends Base implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@NotBlank
 	@Column(name = "first_name")
 	private String firstName;
-	
+
 	@NotBlank
 	@Column(name = "last_name")
 	private String lastName;
-	
+
 	@NotBlank
 	@Column(name = "user_name")
 	private String userName;
-	
+
 	@NotBlank
 	@Column(name = "email")
 	private String email;
-	
+
 	@NotBlank
 	@Column(name = "password")
 	private String password;
-	
+
 	@NotBlank
 	@Column(name = "active")
 	private boolean active;
-	
-	
+
 	public String getFirstName() {
 		return firstName;
 	}

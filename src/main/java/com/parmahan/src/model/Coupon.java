@@ -1,26 +1,52 @@
 package com.parmahan.src.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Coupon {
-	private String id;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+@Entity
+@Table(name = "coupons")
+@Access(value = AccessType.FIELD)
+public class Coupon extends Base implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@NotBlank
+	@Column(name = "code")
 	private String code;
+
+	@NotBlank
+	@Column(name = "description")
 	private String description;
+
+	@NotBlank
+	@Column(name = "amount")
 	private int active;
+
+	@NotBlank
+	@Column(name = "multiple")
 	private int multiple;
+
+	@NotBlank
+	@Column(name = "value")
 	private BigDecimal value;
+
+	@NotBlank
+	@Column(name = "start_date")
 	private Date startDate;
-	private Date insertedAt;
-	private Date updatedAt;
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
+	@NotBlank
+	@Column(name = "end_date")
+	private Date endDate;
 
 	public String getCode() {
 		return code;
@@ -70,20 +96,12 @@ public class Coupon {
 		this.startDate = startDate;
 	}
 
-	public Date getInsertedAt() {
-		return insertedAt;
+	public Date getEndDate() {
+		return endDate;
 	}
 
-	public void setInsertedAt(Date insertedAt) {
-		this.insertedAt = insertedAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
 }

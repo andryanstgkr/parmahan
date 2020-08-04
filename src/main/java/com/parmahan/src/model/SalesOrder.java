@@ -1,24 +1,43 @@
 package com.parmahan.src.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class SalesOrder {
-	private String id;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+@Entity
+@Table(name = "sales_orders")
+@Access(value = AccessType.FIELD)
+public class SalesOrder extends Base implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@NotBlank
+	@Column(name = "coupon_id")
 	private Coupon coupon;
+
+	@Column(name = "session_id")
 	private Session session;
+
+	@NotBlank
+	@Column(name = "user_id")
 	private User user;
+
+	@NotBlank
+	@Column(name = "total")
 	private int total;
+
+	@NotBlank
+	@Column(name = "order_date")
 	private Date orderDate;
-	private Date insertedAt;
-	private Date updatedAt;
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public Coupon getCoupon() {
 		return coupon;
@@ -58,22 +77,6 @@ public class SalesOrder {
 
 	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
-	}
-
-	public Date getInsertedAt() {
-		return insertedAt;
-	}
-
-	public void setInsertedAt(Date insertedAt) {
-		this.insertedAt = insertedAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
 	}
 
 }

@@ -1,20 +1,31 @@
 package com.parmahan.src.model;
 
-import java.util.Date;
+import java.io.Serializable;
 
-public class ProductTag {
-	private String id;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+@Entity
+@Table(name = "product_tags")
+@Access(value = AccessType.FIELD)
+public class ProductTag extends Base implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@NotBlank
+	@Column(name = "product_id")
 	private Product product;
-	private Date insertedAt;
-	private Date updatedAt;
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
+	@NotBlank
+	@Column(name = "tag_id")
+	private Tag tag;
 
 	public Product getProduct() {
 		return product;
@@ -24,20 +35,12 @@ public class ProductTag {
 		this.product = product;
 	}
 
-	public Date getInsertedAt() {
-		return insertedAt;
+	public Tag getTag() {
+		return tag;
 	}
 
-	public void setInsertedAt(Date insertedAt) {
-		this.insertedAt = insertedAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
+	public void setTag(Tag tag) {
+		this.tag = tag;
 	}
 
 }
