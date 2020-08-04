@@ -5,7 +5,7 @@ import java.util.List;
 public interface BaseService <T> {
 	T save (T t);
 
-	void delete(String id);
+	void delete(T t);
 	
 	T getDetail(String id);
 

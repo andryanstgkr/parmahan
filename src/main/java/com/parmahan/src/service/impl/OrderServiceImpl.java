@@ -8,7 +8,7 @@ import com.parmahan.src.service.OrderService;
 public class OrderServiceImpl implements OrderService {
 
 	@Override
-	public void delete(String id) {
+	public void delete(Order order) {
 		// TODO Auto-generated method stub
 	}
 

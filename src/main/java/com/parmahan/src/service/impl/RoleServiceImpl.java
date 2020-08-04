@@ -8,7 +8,7 @@ import com.parmahan.src.service.RoleService;
 public class RoleServiceImpl implements RoleService{
 
 	@Override
-	public void delete(String id) {
+	public void delete(Role role) {
 		// TODO Auto-generated method stub
 	}
 
@@ -25,7 +25,7 @@ public class RoleServiceImpl implements RoleService{
 	}
 
 	@Override
-	public Role save(Role t) {
+	public Role save(Role role) {
 		// TODO Auto-generated method stub
 		return null;
 	}

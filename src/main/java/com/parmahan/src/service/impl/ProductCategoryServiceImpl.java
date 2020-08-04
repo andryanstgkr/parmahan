@@ -8,7 +8,7 @@ import com.parmahan.src.service.ProductCategoryService;
 public class ProductCategoryServiceImpl implements ProductCategoryService{
 
 	@Override
-	public void delete(String id) {
+	public void delete(ProductCategory productCategory) {
 		// TODO Auto-generated method stub
 		
 	}

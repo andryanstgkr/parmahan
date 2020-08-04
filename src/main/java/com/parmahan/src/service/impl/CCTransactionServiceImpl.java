@@ -8,14 +8,13 @@ import com.parmahan.src.service.CCTransactionService;
 public class CCTransactionServiceImpl implements CCTransactionService {
 
 	@Override
-	public void delete(String id) {
-		// TODO Auto-generated method stub
+	public void delete(CCTransaction ccTransaction) {
 
 	}
 
 	@Override
 	public List<CCTransaction> getAll() {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 

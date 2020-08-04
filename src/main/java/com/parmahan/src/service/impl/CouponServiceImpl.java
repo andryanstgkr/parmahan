@@ -8,7 +8,7 @@ import com.parmahan.src.service.CouponService;
 public class CouponServiceImpl implements CouponService {
 
 	@Override
-	public void delete(String id) {
+	public void delete(Coupon coupon) {
 		// TODO Auto-generated method stub
 
 	}
@@ -26,7 +26,7 @@ public class CouponServiceImpl implements CouponService {
 	}
 
 	@Override
-	public Coupon save(Coupon t) {
+	public Coupon save(Coupon coupon) {
 		// TODO Auto-generated method stub
 		return null;
 	}

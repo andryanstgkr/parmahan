@@ -7,7 +7,7 @@ import com.parmahan.src.service.BaseService;
 public class BaseServiceImpl implements BaseService<Object>{
 
 	@Override
-	public void delete(String id) {
+	public void delete(Object o) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -25,7 +25,7 @@ public class BaseServiceImpl implements BaseService<Object>{
 	}
 
 	@Override
-	public Object save(Object t) {
+	public Object save(Object o) {
 		// TODO Auto-generated method stub
 		return null;
 	}

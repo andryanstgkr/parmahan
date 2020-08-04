@@ -25,7 +25,7 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public void delete(String id) {
+	public void delete(Category category) {
 		// TODO Auto-generated method stub
 
 	}

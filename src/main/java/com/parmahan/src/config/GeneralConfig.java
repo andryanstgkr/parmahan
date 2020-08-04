@@ -32,6 +32,8 @@ import com.parmahan.src.dao.impl.SessionDaoImpl;
 import com.parmahan.src.dao.impl.TagDaoImpl;
 import com.parmahan.src.dao.impl.UserDaoImpl;
 import com.parmahan.src.dao.impl.UserRoleDaoImpl;
+import com.parmahan.src.repository.BaseRepository;
+import com.parmahan.src.repository.impl.BaseRepositoryImpl;
 import com.parmahan.src.service.CCTransactionService;
 import com.parmahan.src.service.CategoryService;
 import com.parmahan.src.service.CouponService;
@@ -65,6 +67,10 @@ import com.parmahan.src.service.impl.UserServiceImpl;
 @EnableTransactionManagement
 public class GeneralConfig {
 
+	@Bean
+	public BaseRepository<Object> baseRepository(){
+		return new BaseRepositoryImpl();
+	}
 
 	@Bean
 	public CategoryService categoryService() {

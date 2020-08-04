@@ -8,7 +8,7 @@ import com.parmahan.src.service.TagService;
 public class TagServiceImpl implements TagService {
 
 	@Override
-	public void delete(String id) {
+	public void delete(Tag tag) {
 		// TODO Auto-generated method stub
 	}
 

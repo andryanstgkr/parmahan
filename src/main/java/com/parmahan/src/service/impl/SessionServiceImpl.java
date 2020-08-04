@@ -8,7 +8,7 @@ import com.parmahan.src.service.SessionService;
 public class SessionServiceImpl implements SessionService {
 
 	@Override
-	public void delete(String id) {
+	public void delete(Session session) {
 		// TODO Auto-generated method stub
 	}
 
@@ -25,7 +25,7 @@ public class SessionServiceImpl implements SessionService {
 	}
 
 	@Override
-	public Session save(Session t) {
+	public Session save(Session session) {
 		// TODO Auto-generated method stub
 		return null;
 	}

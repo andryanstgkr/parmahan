@@ -9,7 +9,7 @@ public class UserRoleServiceImpl implements UserRoleService {
 
 
 	@Override
-	public void delete(String id) {
+	public void delete(UserRole userRole) {
 		// TODO Auto-generated method stub
 	}
 
@@ -26,7 +26,7 @@ public class UserRoleServiceImpl implements UserRoleService {
 	}
 
 	@Override
-	public UserRole save(UserRole t) {
+	public UserRole save(UserRole userRole) {
 		// TODO Auto-generated method stub
 		return null;
 	}

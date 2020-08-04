@@ -9,7 +9,7 @@ public class SalesOrderServiceImpl implements SalesOrderService{
 
 
 	@Override
-	public void delete(String id) {
+	public void delete(SalesOrder salesOrder) {
 		// TODO Auto-generated method stub
 	}
 
@@ -26,7 +26,7 @@ public class SalesOrderServiceImpl implements SalesOrderService{
 	}
 
 	@Override
-	public SalesOrder save(SalesOrder t) {
+	public SalesOrder save(SalesOrder salesOrder) {
 		// TODO Auto-generated method stub
 		return null;
 	}
