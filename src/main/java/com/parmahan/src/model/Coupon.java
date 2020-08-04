@@ -40,13 +40,6 @@ public class Coupon extends Base implements Serializable {
 	@Column(name = "value")
 	private BigDecimal value;
 
-	@NotBlank
-	@Column(name = "start_date")
-	private Date startDate;
-
-	@NotBlank
-	@Column(name = "end_date")
-	private Date endDate;
 
 	public String getCode() {
 		return code;
@@ -88,20 +81,5 @@ public class Coupon extends Base implements Serializable {
 		this.value = value;
 	}
 
-	public Date getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
-	public Date getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
 
 }

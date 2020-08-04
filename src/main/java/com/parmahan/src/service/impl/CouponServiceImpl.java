@@ -1,40 +1,46 @@
 package com.parmahan.src.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.parmahan.src.model.Coupon;
+import com.parmahan.src.repository.CouponRepository;
 import com.parmahan.src.service.CouponService;
 
 public class CouponServiceImpl implements CouponService {
 
+	@Autowired
+	private CouponRepository couponRepository;
+
 	@Override
 	public void delete(Coupon coupon) {
-		// TODO Auto-generated method stub
-
+		couponRepository.delete(coupon);
 	}
 
 	@Override
 	public List<Coupon> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Coupon> coupons = new ArrayList<Coupon>();
+		couponRepository.findAll().forEach(coupons::add);
+		return coupons;
 	}
 
 	@Override
 	public Coupon getDetail(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		Coupon coupon = couponRepository.findById(id).get();
+		return coupon;
 	}
 
 	@Override
 	public Coupon save(Coupon coupon) {
-		// TODO Auto-generated method stub
-		return null;
+		coupon = couponRepository.save(coupon);
+		return coupon;
 	}
 
 	@Override
 	public boolean existsById(String id) {
-		// TODO Auto-generated method stub
-		return false;
+		return couponRepository.existsById(id);
 	}
 
 }
