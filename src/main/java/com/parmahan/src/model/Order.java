@@ -11,6 +11,9 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+@Entity
+@Table(name = "orders")
+@Access(value = AccessType.FIELD)
 public class Order extends Base implements Serializable {
 
 	/**

@@ -55,7 +55,7 @@ public class UserController {
 
 		user = userService.save(user);
 		logger.info("User " + user.getFirstName() + " has been successfully created.");
-		return new ResponseEntity<>(user, HttpStatus.OK);
+		return new ResponseEntity<>(user, HttpStatus.CREATED);
 	}
 
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
@@ -78,7 +78,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-	public ResponseEntity<User> getUser(@PathVariable("id") String id, @RequestBody Map<String, String> userMap) {
+	public ResponseEntity<User> getUser(@PathVariable("id") String id, @RequestBody(required = false)  Map<String, String> userMap) {
 
 		User user = userService.getDetail(id);
 
