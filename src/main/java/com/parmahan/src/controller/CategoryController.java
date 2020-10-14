@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,13 +33,27 @@ public class CategoryController {
 		List<Category> categories = categoryService.getAll();
 		return new ResponseEntity<>(categories, HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Category> getCategoryById(@PathVariable String id) {
+		Category category = categoryService.getDetail(id);
+		return new ResponseEntity<>(category, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/edit", method=RequestMethod.POST)
+	public ResponseEntity<Category> updateCategory(@RequestBody Map<String, String> categoryMap){
+		Category category = new Category();
+		category.setId(categoryMap.get("id"));
+		category.setName(categoryMap.get("name"));
+		category = categoryService.save(category);
+		return new ResponseEntity<>(category, HttpStatus.OK); 
+	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public ResponseEntity<Category> createCategory(@RequestBody Map<String, String> userMap) {
 		Category category = new Category();
 		category.setId(CommonStatic.generateUUID());
 		category.setName(userMap.get("name"));
-
 		category = categoryService.save(category);
 		
 		return new ResponseEntity<>(category, HttpStatus.OK);
